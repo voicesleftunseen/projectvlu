@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voices Left Unheard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --deep-navy: #0a1628;
+      --navy: #1a2a4a;
+      --slate: #3d5a80;
+      --pale-blue: #98c1d9;
+      --cream: #f5f3f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep-navy);
+      color: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      background: var(--deep-navy);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 50% 50%, rgba(61,90,128,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .logo-container {
+      width: 180px;
+      height: 180px;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .logo-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .hero .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--pale-blue);
+      max-width: 500px;
+      margin-bottom: 2rem;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      animation: bounce 2s infinite;
+      opacity: 0.5;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-10px); }
+      60% { transform: translateY(-5px); }
+    }
+
+    section {
+      padding: 6rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--slate);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .manifesto {
+      background: var(--navy);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .manifesto::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at 30% 70%, rgba(152,193,217,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .manifesto-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
+      font-weight: 300;
+      line-height: 2;
+      color: var(--cream);
+      position: relative;
+    }
+
+    .manifesto-text .highlight {
+      color: var(--pale-blue);
+      font-style: italic;
+    }
+
+    .manifesto-text .break {
+      display: block;
+      margin: 1.5rem 0;
+    }
+
+    .manifesto-text .short {
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    .about {
+      background: var(--deep-navy);
+    }
+
+    .about-body {
+      font-size: 1.05rem;
+      color: rgba(245,243,240,0.85);
+      line-height: 2;
+    }
+
+    .about-body p {
+      margin-bottom: 1.5rem;
+    }
+
+    .submit {
+      background: var(--navy);
+      text-align: center;
+    }
+
+    .submit-form {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(10,22,40,0.6);
+      border: 1px solid rgba(61,90,128,0.4);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: rgba(245,243,240,0.3);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--pale-blue);
+    }
+
+    .form-group textarea {
+      min-height: 200px;
+      resize: vertical;
+      line-height: 1.8;
+    }
+
+    .submit-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: transparent;
+      border: 1px solid var(--pale-blue);
+      color: var(--pale-blue);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 4px;
+    }
+
+    .submit-btn:hover {
+      background: var(--pale-blue);
+      color: var(--deep-navy);
+    }
+
+    .submit-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--slate);
+      font-style: italic;
+    }
+
+    /* Success message */
+    .form-success {
+      display: none;
+      padding: 2rem;
+      background: rgba(152,193,217,0.1);
+      border: 1px solid var(--pale-blue);
+      border-radius: 4px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-success.show {
+      display: block;
+    }
+
+    .form-success h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--pale-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p {
+      color: var(--cream);
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(61,90,128,0.2);
+    }
+
+    .footer-vlu {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tag {
+      font-size: 0.8rem;
+      color: var(--slate);
+      letter-spacing: 0.1em;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 4rem 1.5rem;
+      }
+
+      .logo-container {
+        width: 140px;
+        height: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="logo-container">
+    <svg class="logo-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="glassGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2a4a7a"/>
+          <stop offset="60%" stop-color="#1a3a6a"/>
+          <stop offset="100%" stop-color="#0a1a3a"/>
+        </radialGradient>
+      </defs>
+
+      <circle cx="100" cy="100" r="85" fill="url(#glassGrad)" stroke="rgba(152,193,217,0.3)" stroke-width="0.5"/>
+
+      <path d="M100 100 L100 15" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none"/>
+      <path d="M100 100 L170 55" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" fill="none"/>
+      <path d="M100 100 L180 120" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none"/>
+      <path d="M100 100 L140 180" stroke="rgba(255,255,255,0.5)" stroke-width="1" fill="none"/>
+      <path d="M100 100 L60 175" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" fill="none"/>
+      <path d="M100 100 L20 100" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" fill="none"/>
+      <path d="M100 100 L30 50" stroke="rgba(255,255,255,0.5)" stroke-width="1" fill="none"/>
+      <path d="M100 100 L55 30" stroke="rgba(255,255,255,0.6)" stroke-width="1.2" fill="none"/>
+
+      <path d="M100 40 L130 25" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" fill="none"/>
+      <path d="M150 80 L165 65" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" fill="none"/>
+      <path d="M140 140 L155 155" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" fill="none"/>
+      <path d="M80 150 L70 165" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" fill="none"/>
+      <path d="M50 100 L40 115" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" fill="none"/>
+      <path d="M60 60 L45 50" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" fill="none"/>
+
+      <circle cx="100" cy="100" r="4" fill="rgba(10,22,40,0.9)" stroke="rgba(152,193,217,0.5)" stroke-width="0.5"/>
+      <circle cx="100" cy="100" r="8" fill="none" stroke="rgba(152,193,217,0.2)" stroke-width="0.5"/>
+
+      <polygon points="100,100 108,92 104,104" fill="rgba(152,193,217,0.15)" stroke="rgba(255,255,255,0.4)" stroke-width="0.5"/>
+      <polygon points="100,100 92,108 96,96" fill="rgba(152,193,217,0.1)" stroke="rgba(255,255,255,0.3)" stroke-width="0.5"/>
+      <polygon points="100,100 112,108 108,96" fill="rgba(152,193,217,0.12)" stroke="rgba(255,255,255,0.35)" stroke-width="0.5"/>
+    </svg>
+  </div>
+
+  <h1>Voices Left Unheard</h1>
+  <p class="tagline">Not to save you. Not to fix you. But to hear you.</p>
+
+  <div class="scroll-hint">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</div>
+
+<section class="manifesto">
+  <p class="section-label">Where We Began</p>
+  <div class="manifesto-text">
+    <span class="short">The girl who once sat alone on the bathroom floor,</span>
+    <span class="break">just begging desperately for someone to make her feel like she is enough.</span>
+
+    <span class="break">The girl who learned that her birthday month brought sorrow.</span>
+    <span class="break">The one who picked up the pieces of her shattered mind, by herself.</span>
+
+    <span class="break">She is here to present to you</span>
+    <span class="short highlight">The Project: Voices Left Unheard.</span>
+
+    <span class="break">Because I was left unheard.</span>
+
+    <span class="short">So I am building this project.</span>
+    <span class="short highlight">Not to save you. Not to fix you. But to hear you.</span>
+
+    <span class="break">Because some thoughts don't need to be fixed.</span>
+    <span class="break">They just need to be heard.</span>
+
+    <span class="break">Because humans can never be perfect.</span>
+    <span class="break">Imperfections, feelings — they make us human.</span>
+
+    <span class="break">And maybe, just maybe,</span>
+    <span class="short">if someone hears your unheard plea,</span>
+    <span class="short">then you would want to climb out of that dark yourself too.</span>
+  </div>
+</section>
+
+<section class="about">
+  <p class="section-label">What This Is</p>
+  <h2 class="section-title">A place for the words that don't fit anywhere else.</h2>
+  <div class="about-body">
+    <p>Voices Left Unheard is a student-led initiative built on one simple belief: <strong>being heard is enough.</strong> We don't diagnose, we don't prescribe, and we don't pretend to have answers. We listen.</p>
+    <p>We publish raw, honest writing from people who feel unseen — about mental health, identity, grief, imperfection, and the quiet struggle of being human. No polished essays required. No happy endings necessary.</p>
+    <p>Whether you're walking on thin glass or picking up the shattered pieces, your voice belongs here.</p>
+  </div>
+</section>
+
+<section class="submit">
+  <p class="section-label">Share Your Voice</p>
+  <h2 class="section-title">What do you need someone to hear?</h2>
+
+  <div class="submit-form">
+    <!-- Success message -->
+    <div class="form-success" id="formSuccess">
+      <h3>Thank you for sharing.</h3>
+      <p>Your words have been received. We'll read them.</p>
+    </div>
+
+    <!-- Form connected to Formspree -->
+    <form action="https://formspree.io/f/mwvgbvpd" method="POST" id="submissionForm">
+      <div class="form-group">
+        <label for="name">Your Name (or stay anonymous)</label>
+        <input type="text" id="name" name="name" placeholder="Name or Anonymous">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email (only if you want a response)</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label for="message">Your Words</label>
+        <textarea id="message" name="message" placeholder="Write what you need to say. There's no wrong way to do this. A sentence, a paragraph, a page — whatever fits." required></textarea>
+      </div>
+
+      <!-- Hidden field for Formspree to know where the submission came from -->
+      <input type="hidden" name="_subject" value="New submission from Voices Left Unheard">
+
+      <div style="text-align: center;">
+        <button type="submit" class="submit-btn">Share Your Voice</button>
+      </div>
+
+      <p class="submit-note">All submissions are read. Selected pieces are published with your consent. You remain in control of your story.</p>
+    </form>
+  </div>
+</section>
+
+<div class="footer">
+  <div class="footer-vlu">VLU</div>
+  <p class="footer-tag">Voices Left Unheard — Est. 2026</p>
+</div>
+
+<script>
+  // Show success message after form submission
+  document.getElementById('submissionForm').addEventListener('submit', function(e) {
+    var form = this;
+    var successMsg = document.getElementById('formSuccess');
+
+    // Let Formspree handle the submission, then show success
+    setTimeout(function() {
+      form.style.display = 'none';
+      successMsg.classList.add('show');
+    }, 500);
+  });
+</script>
+
+</body>
+</html>
