@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Get Involved | Voices Left Unseen</title>
+  <style>
+    :root {
+      --bg-white: #ffffff;
+      --deep-navy: #0a1628;
+      --win-gray: #c0c0c0;
+      --win-blue: #000080;
+      --win-border-light: #ffffff;
+      --win-border-dark: #808080;
+      --slate-muted: #3d5a80;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    /* Y2K GRID PAPER BACKGROUND */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-white);
+      background-image: 
+        linear-gradient(rgba(10, 22, 40, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(10, 22, 40, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: var(--deep-navy);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 40px;
+    }
+
+    /* TOP RETRO OS TASKBAR */
+    .os-taskbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 38px;
+      background: var(--win-gray);
+      border-bottom: 2px solid var(--win-border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 1000;
+      font-family: 'MS Sans Serif', Tahoma, sans-serif;
+      font-size: 12px;
+    }
+
+    .taskbar-left, .taskbar-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .win-button {
+      background: var(--win-gray);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      padding: 3px 10px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .taskbar-tab {
+      background: var(--win-gray);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      padding: 3px 15px;
+      font-size: 11px;
+    }
+
+    .clock-box {
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 3px 8px;
+      background: var(--win-gray);
+      font-size: 11px;
+    }
+
+    /* SITE NAV BAR */
+    nav {
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(5px);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      background: var(--deep-navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bg-white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--deep-navy);
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.5; }
+    .nav-links a.active { font-weight: 600; border-bottom: 2px solid var(--deep-navy); }
+
+    @media (max-width: 850px) {
+      nav { padding: 1rem; flex-direction: column; gap: 1rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
+    /* MAIN CONTAINER */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 2rem 5rem;
+      width: 100%;
+    }
+
+    /* TOP BANNER BOX */
+    .top-hero-banner {
+      border: 2px solid var(--deep-navy);
+      background: #ffffff;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2.5rem;
+      box-shadow: 6px 6px 0px var(--deep-navy);
+    }
+
+    .banner-meta {
+      font-family: monospace;
+      font-size: 0.75rem;
+      color: var(--slate-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .pixel-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--deep-navy);
+      line-height: 1.2;
+    }
+
+    /* SECTION TITLE */
+    .section-headline {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 1.3rem;
+      color: var(--deep-navy);
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--deep-navy);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* ROLES GRID */
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 768px) {
+      .roles-grid { grid-template-columns: 1fr; }
+    }
+
+    /* RETRO WINDOW CARD */
+    .retro-window {
+      background: var(--win-gray);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      box-shadow: 5px 5px 0px var(--deep-navy);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .retro-window-header {
+      background: var(--win-blue);
+      color: white;
+      padding: 4px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'MS Sans Serif', monospace;
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+
+    .card-body {
+      background: #ffffff;
+      border-top: 1px solid var(--win-border-dark);
+      border-left: 1px solid var(--win-border-dark);
+      border-right: 1px solid var(--win-border-light);
+      border-bottom: 1px solid var(--win-border-light);
+      margin: 3px;
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .role-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .role-desc {
+      font-size: 0.9rem;
+      color: var(--deep-navy);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+    }
+
+    .role-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--deep-navy);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .role-features li::before {
+      content: "✦ ";
+      color: var(--slate-muted);
+    }
+
+    .action-btn {
+      margin-top: auto;
+      display: block;
+      width: 100%;
+      background: var(--win-gray);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      color: var(--deep-navy);
+      text-align: center;
+      padding: 8px 12px;
+      font-family: 'MS Sans Serif', monospace;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .card-footer {
+      background: var(--win-gray);
+      padding: 6px 12px;
+      border-top: 1px solid var(--win-border-dark);
+      font-family: monospace;
+      font-size: 0.72rem;
+      color: var(--deep-navy);
+      display: flex;
+      justify-content: space-between;
+      margin: 0 3px 3px 3px;
+    }
+
+    /* BENEFITS SECTION */
+    .benefits-box {
+      background: var(--deep-navy);
+      color: white;
+      padding: 3rem;
+      border: 2px solid var(--deep-navy);
+      box-shadow: 8px 8px 0px rgba(0,0,0,0.15);
+      margin-bottom: 4rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .benefits-grid { grid-template-columns: 1fr; }
+    }
+
+    .benefit-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .benefit-item p {
+      font-size: 0.85rem;
+      color: #d0d8e8;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(10, 22, 40, 0.08);
+      font-size: 0.85rem;
+      color: var(--slate-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--deep-navy);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP OS TASKBAR -->
+  <div class="os-taskbar">
+    <div class="taskbar-left">
+      <div class="win-button">📁 Start</div>
+      <div class="taskbar-tab">get_involved.exe</div>
+    </div>
+    <div class="taskbar-right">
+      <div class="clock-box">// COORD: 38.1195 N, 221.4425 W</div>
+      <div class="clock-box">8:13 PM</div>
+    </div>
+  </div>
+
+  <!-- SITE NAV BAR -->
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <div class="logo-badge">VLU</div>
+      <span class="nav-logo-text">Voices Left Unseen</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="mission.html">Mission</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="submit.html">Submit Work</a></li>
+      <li><a href="involved.html" class="active">Get Involved</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="page">
+    
+    <!-- HEADER RETRO BANNER -->
+    <div class="top-hero-banner">
+      <div>
+        <div class="banner-meta">// TEAM RECRUITMENT • ROLLING APPLICATIONS</div>
+        <h1 class="pixel-title">GET INVOLVED</h1>
+      </div>
+    </div>
+
+    <h2 class="section-headline">■ OPEN TEAM DEPARTMENTS</h2>
+
+    <!-- ROLES GRID -->
+    <div class="roles-grid">
+      
+      <!-- ROLE 1 -->
+      <div class="retro-window">
+        <div class="retro-window-header">
+          <span>DEPT_01.EXE</span>
+          <span style="background: #2e7d32; color: white; padding: 1px 6px; font-size: 0.7rem;">OPEN</span>
+        </div>
+        <div class="card-body">
+          <span style="font-family: monospace; font-size: 0.75rem; color: var(--slate-muted); font-weight: bold;">WRITING & EDITORIAL</span>
+          <h3 class="role-title">Writing & Editorial Team</h3>
+          <p class="role-desc">Review, curate, and polish creative literary submissions while contributing original pieces for digital publication.</p>
+          <ul class="role-features">
+            <li>Evaluate poetry, prose, and essays</li>
+            <li>Provide light editorial refinement</li>
+            <li>Draft spotlight pieces and captions</li>
+          </ul>
+          <a href="https://forms.gle/XHdRYDpcoA78RS6L9" target="_blank" class="action-btn">APPLY NOW →</a>
+        </div>
+        <div class="card-footer">
+          <span>STATUS: REVIEWING ROLLING</span>
+          <span>FLEXIBLE HOURS</span>
+        </div>
+      </div>
+
+      <!-- ROLE 2 -->
+      <div class="retro-window">
+        <div class="retro-window-header">
+          <span>DEPT_02.EXE</span>
+          <span style="background: #2e7d32; color: white; padding: 1px 6px; font-size: 0.7rem;">OPEN</span>
+        </div>
+        <div class="card-body">
+          <span style="font-family: monospace; font-size: 0.75rem; color: var(--slate-muted); font-weight: bold;">ART & ILLUSTRATION</span>
+          <h3 class="role-title">Art & Illustration Team</h3>
+          <p class="role-desc">Translate human emotions into custom artwork and visual assets to accompany literary works and platform branding.</p>
+          <ul class="role-features">
+            <li>Create original digital sketches & art</li>
+            <li>Design covers and web banners</li>
+            <li>Help curate external art submissions</li>
+          </ul>
+          <a href="https://forms.gle/XHdRYDpcoA78RS6L9" target="_blank" class="action-btn">APPLY NOW →</a>
+        </div>
+        <div class="card-footer">
+          <span>STATUS: REVIEWING ROLLING</span>
+          <span>FLEXIBLE HOURS</span>
+        </div>
+      </div>
+
+      <!-- ROLE 3 -->
+      <div class="retro-window">
+        <div class="retro-window-header">
+          <span>DEPT_03.EXE</span>
+          <span style="background: #2e7d32; color: white; padding: 1px 6px; font-size: 0.7rem;">OPEN</span>
+        </div>
+        <div class="card-body">
+          <span style="font-family: monospace; font-size: 0.75rem; color: var(--slate-muted); font-weight: bold;">GRAPHIC DESIGN & CONTENT</span>
+          <h3 class="role-title">Graphic Design & Content</h3>
+          <p class="role-desc">Drive visual identity, social media presence, and brand engagement across digital channels.</p>
+          <ul class="role-features">
+            <li>Design templates and banners in Canva</li>
+            <li>Produce short-form video content</li>
+            <li>Format digital publications</li>
+          </ul>
+          <a href="https://forms.gle/XHdRYDpcoA78RS6L9" target="_blank" class="action-btn">APPLY NOW →</a>
+        </div>
+        <div class="card-footer">
+          <span>STATUS: REVIEWING ROLLING</span>
+          <span>FLEXIBLE HOURS</span>
+        </div>
+      </div>
+
+      <!-- ROLE 4 -->
+      <div class="retro-window">
+        <div class="retro-window-header">
+          <span>DEPT_04.EXE</span>
+          <span style="background: #2e7d32; color: white; padding: 1px 6px; font-size: 0.7rem;">OPEN</span>
+        </div>
+        <div class="card-body">
+          <span style="font-family: monospace; font-size: 0.75rem; color: var(--slate-muted); font-weight: bold;">OUTREACH & COMMUNITY</span>
+          <h3 class="role-title">Outreach & Engagement</h3>
+          <p class="role-desc">Expand community reach, establish student partnerships, and manage team recruitment.</p>
+          <ul class="role-features">
+            <li>Share recruitment and submission calls</li>
+            <li>Build partnerships with student clubs</li>
+            <li>Maintain a welcoming safe space</li>
+          </ul>
+          <a href="https://forms.gle/XHdRYDpcoA78RS6L9" target="_blank" class="action-btn">APPLY NOW →</a>
+        </div>
+        <div class="card-footer">
+          <span>STATUS: REVIEWING ROLLING</span>
+          <span>FLEXIBLE HOURS</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BENEFITS SECTION -->
+    <div class="benefits-box">
+      <span style="background: white; color: var(--deep-navy); font-family: monospace; font-weight: bold; font-size: 0.75rem; padding: 3px 10px; display: inline-block; margin-bottom: 0.8rem;">WHY JOIN VLU?</span>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 400; margin-bottom: 1rem;">Grow with a community that hears you</h2>
+      <p style="color: #d0d8e8; max-width: 700px; font-size: 0.95rem;">Joining our student-led team comes with tangible perks to support your high school journey and creative career.</p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <h3>Resume & College Booster</h3>
+          <p>Gain meaningful volunteer hours and authentic leadership experience for your applications.</p>
+        </div>
+        <div class="benefit-item">
+          <h3>Creative Skill-Building</h3>
+          <p>Strengthen your writing, design, technical, and editorial skills while making a direct impact.</p>
+        </div>
+        <div class="benefit-item">
+          <h3>Global Teen Network</h3>
+          <p>Connect and collaborate with like-minded student creators and artists from across the globe.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="mission.html">Mission</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="submit.html">Submit Work</a>
+      <a href="involved.html">Get Involved</a>
+    </div>
+    <p>Voices Left Unseen — Est. 2026. A student-led initiative built by teens, for teens.</p>
+  </footer>
+
+</body>
+</html>
