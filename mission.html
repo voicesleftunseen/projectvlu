@@ -187,7 +187,7 @@
       line-height: 1.2;
     }
 
-    /* RETRO WINDOW CARD */
+    /* RETRO WINDOW CARD WITH WATERMARK STAR BACKGROUND */
     .retro-window {
       background: var(--win-gray);
       border-top: 2px solid var(--win-border-light);
@@ -227,7 +227,11 @@
     }
 
     .card-body {
-      background: #ffffff;
+      background-color: #ffffff;
+      background-image: url('star.png'); /* Match your uploaded star image filename */
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 520px auto;
       border-top: 1px solid var(--win-border-dark);
       border-left: 1px solid var(--win-border-dark);
       border-right: 1px solid var(--win-border-light);
@@ -238,28 +242,18 @@
 
     .mission-headline {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
       font-weight: 400;
       color: var(--deep-navy);
-      line-height: 1.2;
-      margin-bottom: 2rem;
+      line-height: 1.15;
+      margin-bottom: 2.5rem;
     }
 
     .mission-text-block p {
       font-size: 1.05rem;
       color: var(--deep-navy);
-      margin-bottom: 1.5rem;
-      line-height: 1.8;
-    }
-
-    .mission-quote {
-      border-left: 3px solid var(--deep-navy);
-      padding-left: 1.5rem;
-      margin: 2.5rem 0;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-style: italic;
-      color: var(--slate-muted);
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
     }
 
     /* FOOTER */
@@ -291,7 +285,7 @@
 
     @media (max-width: 768px) {
       nav { padding: 1.5rem; flex-direction: column; gap: 1rem; }
-      .card-body { padding: 25px; }
+      .card-body { padding: 25px; background-size: 320px auto; }
     }
   </style>
 </head>
@@ -349,15 +343,11 @@
         <h2 class="mission-headline">Empowering teens to create, express, and be heard.</h2>
 
         <div class="mission-text-block">
-          <p><strong>Voices Left Unseen</strong> is a student-led initiative built on one belief: <strong>every teen deserves a space to create freely.</strong> We don't diagnose, prescribe, or pretend to have answers. We listen.</p>
+          <p>Voices Left Unseen is a student-led initiative built on one belief: <strong>every teen deserves a space to create freely.</strong> We don't diagnose, prescribe, or pretend to have answers. We listen.</p>
 
-          <div class="mission-quote">
-            "What are we, if not art created by our own imperfections?"
-          </div>
+          <p>We believe art and literature are not luxuries — they're necessities. Whether it's a poem written at 2 AM, a painting that captures something words can't, a song that holds your grief, or a photograph that freezes a moment of joy — every form of expression matters here.</p>
 
-          <p>We believe art and literature are not luxuries — <strong>they're necessities.</strong> Whether it's a poem written at 2 AM, a painting that captures something words can't, a song that holds your grief, or a photograph that freezes a moment of joy — every form of expression matters here.</p>
-
-          <p>Our mission is to empower teens through the arts: to give them platforms, mentorship, and communities where they can create without judgment, vent without fear, and grow without limits.</p>
+          <p>Our mission is to empower teens through the arts: to give them platforms, mentorship, and communities where they can create without judgment, vent without fear, and grow without limits. The full spectrum of being human belongs here — joy, grief, hope, confusion, love, anger, peace, and everything in between.</p>
         </div>
 
       </div>
@@ -379,9 +369,30 @@
 
 </body>
 </html>
-
-
+    
+    
+  
+     
+     
+     
+     
+    
       
+
+   
+     
+     
+    
+   
+
+  
+
+
+   
+
+     
+    
+          
      
      
      
