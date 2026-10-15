@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>About | Voices Left Unseen</title>
+  <style>
+    :root {
+      --bg-white: #ffffff;
+      --deep-navy: #0a1628;
+      --win-gray: #c0c0c0;
+      --win-blue: #000080;
+      --win-border-light: #ffffff;
+      --win-border-dark: #808080;
+      --slate-muted: #3d5a80;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-white);
+      color: var(--deep-navy);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-top: 40px;
+    }
+
+    /* TOP RETRO OS TASKBAR */
+    .os-taskbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 38px;
+      background: var(--win-gray);
+      border-bottom: 2px solid var(--win-border-dark);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      z-index: 1000;
+      font-family: 'MS Sans Serif', Tahoma, sans-serif;
+      font-size: 12px;
+    }
+
+    .taskbar-left, .taskbar-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .win-button {
+      background: var(--win-gray);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      padding: 3px 10px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .taskbar-tab {
+      background: var(--win-gray);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      padding: 3px 15px;
+      font-size: 11px;
+    }
+
+    .clock-box {
+      border-top: 2px solid var(--win-border-dark);
+      border-left: 2px solid var(--win-border-dark);
+      border-right: 2px solid var(--win-border-light);
+      border-bottom: 2px solid var(--win-border-light);
+      padding: 3px 8px;
+      background: var(--win-gray);
+      font-size: 11px;
+    }
+
+    /* SITE NAV BAR */
+    nav {
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: transparent;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-badge {
+      width: 42px;
+      height: 42px;
+      background: var(--deep-navy);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--bg-white);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .nav-logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--deep-navy);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--deep-navy);
+      text-decoration: none;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 0.5; }
+    .nav-links a.active { font-weight: 600; border-bottom: 2px solid var(--deep-navy); }
+
+    @media (max-width: 850px) {
+      nav { padding: 1rem; flex-direction: column; gap: 1rem; }
+      .nav-links { flex-wrap: wrap; justify-content: center; gap: 1rem; }
+    }
+
+    /* MAIN CONTAINER */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 2rem 5rem;
+      width: 100%;
+    }
+
+    /* PIXELATED HEADER STYLE */
+    .pixel-title {
+      font-family: 'Press Start 2P', monospace;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      color: var(--deep-navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .creator-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-style: italic;
+      color: var(--slate-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    /* LAYOUT GRID */
+    .about-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3.5rem;
+      align-items: start;
+      width: 100%;
+    }
+
+    @media (max-width: 850px) {
+      .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+
+    /* WINDOW BOX STYLING */
+    .retro-window {
+      background: var(--win-gray);
+      border-top: 2px solid var(--win-border-light);
+      border-left: 2px solid var(--win-border-light);
+      border-right: 2px solid var(--win-border-dark);
+      border-bottom: 2px solid var(--win-border-dark);
+      box-shadow: 4px 4px 10px rgba(0,0,0,0.15);
+      position: relative;
+      width: 100%;
+    }
+
+    .retro-window-header {
+      background: var(--win-blue);
+      color: white;
+      padding: 4px 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'MS Sans Serif', monospace;
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+
+    .retro-window-controls {
+      display: flex;
+      gap: 3px;
+    }
+
+    .retro-ctrl-btn {
+      width: 16px;
+      height: 16px;
+      background: var(--win-gray);
+      color: black;
+      border-top: 1px solid var(--win-border-light);
+      border-left: 1px solid var(--win-border-light);
+      border-right: 1px solid var(--win-border-dark);
+      border-bottom: 1px solid var(--win-border-dark);
+      font-size: 9px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .retro-window-body {
+      background: #ffffff;
+      border-top: 1px solid var(--win-border-dark);
+      border-left: 1px solid var(--win-border-dark);
+      border-right: 1px solid var(--win-border-light);
+      border-bottom: 1px solid var(--win-border-light);
+      margin: 3px;
+      padding: 20px;
+    }
+
+    /* TEXT CONTENT */
+    .story-body p {
+      font-size: 1.02rem;
+      color: var(--deep-navy);
+      line-height: 1.85;
+      margin-bottom: 1.2rem;
+    }
+
+    .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: var(--slate-muted);
+      margin-top: 1rem;
+    }
+
+    /* IMAGE WINDOW PLACEHOLDER */
+    .photo-box {
+      width: 100%;
+      height: 320px;
+      border: 2px dashed var(--slate-muted);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #f4f6f9;
+      color: var(--slate-muted);
+      font-family: monospace;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    /* FLOATING RETRO OVERLAPPING CARD */
+    .floating-info-card {
+      margin-top: -65px;
+      margin-left: -30px;
+      width: calc(100% + 30px);
+      z-index: 20;
+    }
+
+    @media (max-width: 850px) {
+      .floating-info-card {
+        margin-top: 1.5rem;
+        margin-left: 0;
+        width: 100%;
+      }
+    }
+
+    .info-list {
+      list-style: none;
+      font-family: monospace;
+      font-size: 0.85rem;
+      color: var(--deep-navy);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dashed rgba(10, 22, 40, 0.15);
+      padding-bottom: 0.4rem;
+    }
+
+    .info-label {
+      font-weight: bold;
+      color: var(--slate-muted);
+    }
+
+    /* PERFECTLY ALIGNED MOTTO ROW */
+    .motto-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: none !important;
+      padding-top: 0.2rem;
+    }
+
+    .motto-text-aligned {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--deep-navy);
+      text-align: right;
+      max-width: 70%;
+      line-height: 1.3;
+    }
+
+    /* FOOTER */
+    .footer {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(10, 22, 40, 0.08);
+      font-size: 0.85rem;
+      color: var(--slate-muted);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--deep-navy);
+      text-decoration: none;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-links a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- TOP OS TASKBAR -->
+  <div class="os-taskbar">
+    <div class="taskbar-left">
+      <div class="win-button">📁 Start</div>
+      <div class="taskbar-tab">about-us.html</div>
+    </div>
+    <div class="taskbar-right">
+      <div class="clock-box">07/11/2003</div>
+      <div class="clock-box">7:11 AM</div>
+    </div>
+  </div>
+
+  <!-- SITE NAV BAR -->
+  <nav>
+    <a href="index.html" class="nav-brand">
+      <div class="logo-badge">VLU</div>
+      <span class="nav-logo-text">Voices Left Unseen</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="mission.html">Mission</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="submit.html">Submit</a></li>
+      <li><a href="involved.html">Get Involved</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <main class="page">
+    <h1 class="pixel-title">about us!</h1>
+    <div class="creator-subtitle">Ashmita — Executive Director & Founder</div>
+
+    <div class="about-layout">
+      
+      <!-- LEFT: STORY INSIDE WINDOW -->
+      <div class="retro-window">
+        <div class="retro-window-header">
+          <span>STORY.TXT</span>
+          <div class="retro-window-controls">
+            <div class="retro-ctrl-btn">_</div>
+            <div class="retro-ctrl-btn">X</div>
+          </div>
+        </div>
+        <div class="retro-window-body">
+          <div class="story-body">
+            <p>Hi, I'm Ashmita. I am 16 years old, and I founded Voices Left Unseen because I went through something similar during my own journey. Navigating those difficult moments alone made me realize how vital it is to have an outlet—writing genuinely helped me through it.</p>
+            <p>My core motivation behind VLU stems from a simple belief: humans can never be perfect; our imperfections and feelings are what make us human. I wanted to build a sanctuary where teens can express themselves freely without the pressure of being fixed.</p>
+          </div>
+          <div class="signature">— Ashmita</div>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: PHOTO WINDOW + OVERLAPPING FLOATING CARD -->
+      <div style="display: flex; flex-direction: column; width: 100%; position: relative;">
+        
+        <!-- PHOTO WINDOW -->
+        <div class="retro-window">
+          <div class="retro-window-header">
+            <span>MEET-ASHMITA.EXE</span>
+            <div class="retro-window-controls">
+              <div class="retro-ctrl-btn">_</div>
+              <div class="retro-ctrl-btn">X</div>
+            </div>
+          </div>
+          <div class="retro-window-body" style="display: flex; flex-direction: column; align-items: center;">
+            <div class="photo-box">
+              [ Drop your image here ]
+            </div>
+            <div style="margin-top: 0.75rem; font-family: monospace; font-size: 0.75rem; color: var(--slate-muted); text-transform: uppercase;">
+              FOUNDER // PROJECT VLU
+            </div>
+          </div>
+        </div>
+
+        <!-- OVERLAPPING RETRO INFO CARD -->
+        <div class="retro-window floating-info-card">
+          <div class="retro-window-header">
+            <span>INFO.TXT</span>
+            <div class="retro-window-controls">
+              <div class="retro-ctrl-btn">X</div>
+            </div>
+          </div>
+          <div class="retro-window-body">
+            <div class="info-list">
+              <div class="info-row">
+                <span class="info-label">INITIATIVE:</span> 
+                <span>Voices Left Unseen</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">FOUNDER:</span> 
+                <span>Ashmita</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">ROLE:</span> 
+                <span>Executive Director</span>
+              </div>
+              <div class="motto-row">
+                <span class="info-label">MOTTO:</span>
+                <span class="motto-text-aligned">"What are we, if not art created by our own imperfections?"</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="mission.html">Mission</a>
+      <a href="about.html">About</a>
+      <a href="programs.html">Programs</a>
+      <a href="submit.html">Submit</a>
+      <a href="involved.html">Get Involved</a>
+    </div>
+    <p>Voices Left Unseen — Est. 2026. A student-led initiative built by teens, for teens.</p>
+  </footer>
+
+</body>
+</html>
