@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Get Involved | Voices Left Unseen</title>
+  <style>
+    :root {
+      --deep-navy: #0a1628;
+      --navy: #1a2a4a;
+      --slate: #3d5a80;
+      --pale-blue: #98c1d9;
+      --cream: #f5f3f0;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep-navy);
+      color: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(10,22,40,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(61,90,128,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--pale-blue);
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); border-bottom: 1px solid var(--pale-blue); }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+    }
+
+    /* PAGE SECTIONS */
+    .page {
+      min-height: 100vh;
+      padding: 8rem 2rem 6rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .page.navy-bg {
+      max-width: none;
+      background: var(--navy);
+    }
+
+    .page-inner { max-width: 900px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--slate);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    /* PROGRAMS */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .program-card {
+      background: rgba(26,42,74,0.5);
+      border: 1px solid rgba(61,90,128,0.3);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .program-card:hover {
+      border-color: var(--pale-blue);
+      transform: translateY(-4px);
+    }
+
+    .program-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .program-card p {
+      font-size: 0.95rem;
+      color: rgba(245,243,240,0.75);
+      line-height: 1.8;
+    }
+
+    .status-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      margin-top: 1.5rem;
+      text-decoration: none;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .status-badge.coming-soon {
+      color: var(--pale-blue);
+      border: 1px solid rgba(152, 193, 217, 0.3);
+      background: transparent;
+    }
+
+    .status-badge.open-now {
+      color: var(--deep-navy);
+      background: var(--pale-blue);
+      border: 1px solid var(--pale-blue);
+      font-weight: 600;
+    }
+
+    .status-badge.open-now:hover {
+      background: var(--white);
+      border-color: var(--white);
+    }
+
+    .center { text-align: center; }
+
+    /* FOOTER */
+    .footer {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(61,90,128,0.2);
+      background: var(--deep-navy);
+    }
+
+    .footer-vlu {
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tag {
+      font-size: 0.8rem;
+      color: var(--slate);
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--pale-blue); }
+
+    .footer-copy { font-size: 0.75rem; color: rgba(61,90,128,0.6); }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Voices Left Unseen</a>
+  <ul class="nav-links">
+    <li><a href="mission.html">Mission</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="programs.html">Programs</a></li>
+    <li><a href="submit.html">Submit</a></li>
+    <li><a href="involved.html" class="active">Get Involved</a></li>
+  </ul>
+</nav>
+
+<div class="page navy-bg"><div class="page-inner">
+  <p class="section-label">Join Us</p>
+  <h2 class="section-title">Get Involved</h2>
+
+  <div class="programs-grid">
+    <!-- Read the Blog -->
+    <div class="program-card center">
+      <div>
+        <h3>📝 Read the Blog</h3>
+        <p>Read featured works, artist interviews, and stories from our community. Find inspiration and see what other teens are creating.</p>
+      </div>
+      <div>
+        <span class="status-badge coming-soon">Coming Soon</span>
+      </div>
+    </div>
+
+    <!-- Join Our Community (Linked to Instagram) -->
+    <div class="program-card center">
+      <div>
+        <h3>💬 Join Our Community</h3>
+        <p>Connect with other teen artists and writers. Share your work, get feedback, and grow together in a safe, supportive space.</p>
+      </div>
+      <div>
+        <a href="https://www.instagram.com/project.vlu/" class="status-badge open-now" target="_blank">Open Now →</a>
+      </div>
+    </div>
+
+    <!-- Volunteer (Linked to Google Form) -->
+    <div class="program-card center">
+      <div>
+        <h3>🤝 Volunteer</h3>
+        <p>Help us review submissions, lead workshops, or manage our gallery. We're always looking for passionate teens to join the team.</p>
+      </div>
+      <div>
+        <a href="https://forms.gle/bphU54vj695nBxvb8" class="status-badge open-now" target="_blank">Open Now →</a>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+<div class="footer">
+  <div class="footer-vlu">VLU</div>
+  <p class="footer-tag">Voices Left Unseen — Est. 2026</p>
+  <div class="footer-links">
+    <a href="mission.html">Mission</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="submit.html">Submit</a>
+    <a href="involved.html">Get Involved</a>
+  </div>
+  <p class="footer-copy">A student-led initiative. Built by teens, for teens.</p>
+</div>
+
+</body>
+</html>
