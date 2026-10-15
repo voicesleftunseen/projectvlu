@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Programs | Voices Left Unseen</title>
+  <style>
+    :root {
+      --deep-navy: #0a1628;
+      --navy: #1a2a4a;
+      --slate: #3d5a80;
+      --pale-blue: #98c1d9;
+      --cream: #f5f3f0;
+      --white: #ffffff;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--deep-navy);
+      color: var(--cream);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: rgba(10,22,40,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(61,90,128,0.2);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--pale-blue);
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.active { color: var(--white); border-bottom: 1px solid var(--pale-blue); }
+
+    @media (max-width: 700px) {
+      .nav-links { display: none; }
+    }
+
+    /* HERO / LANDING */
+    .landing {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 3rem;
+      position: relative;
+      background: var(--deep-navy);
+      overflow: hidden;
+    }
+
+    .landing::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(61,90,128,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .deco-shard {
+      position: absolute;
+      pointer-events: none;
+      opacity: 0.5;
+      animation: floaty 7s ease-in-out infinite;
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-14px) rotate(6deg); }
+    }
+
+    .logo-container {
+      width: 190px;
+      height: 190px;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-svg { width: 100%; height: 100%; }
+
+    .landing h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .landing .tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.15rem, 2.5vw, 1.6rem);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--pale-blue);
+      max-width: 520px;
+      margin-bottom: 3.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .landing-nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 1000px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .landing-link {
+      display: block;
+      padding: 1.6rem 1.2rem;
+      border: 1px solid rgba(61,90,128,0.35);
+      border-radius: 8px;
+      text-decoration: none;
+      background: rgba(26,42,74,0.35);
+      transition: all 0.35s;
+      text-align: left;
+    }
+
+    .landing-link:hover {
+      border-color: var(--pale-blue);
+      background: rgba(26,42,74,0.7);
+      transform: translateY(-5px);
+    }
+
+    .landing-link .num {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--slate);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .landing-link .label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      display: block;
+    }
+
+    .landing-link .sub {
+      font-size: 0.78rem;
+      color: rgba(245,243,240,0.55);
+      display: block;
+      margin-top: 0.35rem;
+      line-height: 1.5;
+    }
+
+    /* PAGE SECTIONS */
+    .page {
+      min-height: 100vh;
+      padding: 8rem 2rem 6rem;
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .page.navy-bg {
+      max-width: none;
+      background: var(--navy);
+    }
+
+    .page-inner { max-width: 900px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--slate);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      color: var(--white);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+
+    .section-body p {
+      font-size: 1.1rem;
+      color: rgba(245,243,240,0.85);
+      line-height: 2;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-body p strong { color: var(--white); }
+
+    .back-home {
+      display: inline-block;
+      margin-top: 3rem;
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      transition: color 0.3s;
+    }
+
+    .back-home:hover { color: var(--pale-blue); }
+
+    /* PROGRAMS */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .program-card {
+      background: rgba(26,42,74,0.5);
+      border: 1px solid rgba(61,90,128,0.3);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .program-card:hover {
+      border-color: var(--pale-blue);
+      transform: translateY(-4px);
+    }
+
+    .program-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .program-card p {
+      font-size: 0.95rem;
+      color: rgba(245,243,240,0.75);
+      line-height: 1.8;
+    }
+
+    /* IMPACT */
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .stat { padding: 1.5rem; }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--pale-blue);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--slate);
+      margin-top: 0.5rem;
+    }
+
+    /* FOUNDER */
+    .founder { text-align: center; }
+
+    .founder-photo {
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 2rem;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid rgba(152,193,217,0.4);
+      background: radial-gradient(circle at 50% 35%, #2a4a7a 0%, #1a3a6a 55%, #0a1a3a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .founder-photo svg { width: 55%; height: 55%; opacity: 0.6; }
+
+    .founder-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .founder-role {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.25em;
+      color: var(--slate);
+      margin-bottom: 0.4rem;
+    }
+
+    .founder-role.hl { color: var(--pale-blue); margin-bottom: 2rem; }
+
+    .founder-bio {
+      max-width: 600px;
+      margin: 0 auto;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: rgba(245,243,240,0.85);
+      line-height: 2;
+    }
+
+    .founder-story {
+      max-width: 600px;
+      margin: 1.5rem auto 0;
+      font-size: 0.95rem;
+      color: rgba(245,243,240,0.75);
+      line-height: 2;
+      text-align: center;
+    }
+
+    .founder-sign {
+      margin-top: 1.5rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1.2rem;
+      color: var(--pale-blue);
+      text-align: center;
+    }
+
+    /* FORM */
+    .submit-form { max-width: 500px; margin: 0 auto; }
+
+    .form-group { margin-bottom: 1.5rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 1rem;
+      background: rgba(10,22,40,0.6);
+      border: 1px solid rgba(61,90,128,0.4);
+      border-radius: 4px;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(245,243,240,0.3); }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--pale-blue);
+    }
+
+    .form-group input[type="file"] {
+      padding: 0.8rem;
+      cursor: pointer;
+      border: 2px dashed rgba(61,90,128,0.4);
+      background: rgba(10,22,40,0.4);
+    }
+
+    .form-group input[type="file"]:hover {
+      border-color: var(--pale-blue);
+      background: rgba(10,22,40,0.6);
+    }
+
+    .form-group textarea { min-height: 200px; resize: vertical; line-height: 1.8; }
+    .form-group select { cursor: pointer; appearance: none; }
+
+    .submit-btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: transparent;
+      border: 1px solid var(--pale-blue);
+      color: var(--pale-blue);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      cursor: pointer;
+      transition: all 0.3s;
+      border-radius: 4px;
+    }
+
+    .submit-btn:hover { background: var(--pale-blue); color: var(--deep-navy); }
+
+    .submit-note {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--slate);
+      font-style: italic;
+    }
+
+    .form-success {
+      display: none;
+      padding: 2rem;
+      background: rgba(152,193,217,0.1);
+      border: 1px solid var(--pale-blue);
+      border-radius: 4px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .form-success.show { display: block; }
+
+    .form-success h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      color: var(--pale-blue);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p { color: var(--cream); font-size: 0.95rem; }
+
+    .center { text-align: center; }
+
+    /* FOOTER */
+    .footer {
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      border-top: 1px solid rgba(61,90,128,0.2);
+      background: var(--deep-navy);
+    }
+
+    .footer-vlu {
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tag {
+      font-size: 0.8rem;
+      color: var(--slate);
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: var(--slate);
+      text-decoration: none;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--pale-blue); }
+
+    .footer-copy { font-size: 0.75rem; color: rgba(61,90,128,0.6); }
+
+    @media (max-width: 600px) {
+      .page { padding: 6rem 1.5rem 4rem; }
+      .logo-container { width: 150px; height: 150px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Voices Left Unseen</a>
+  <ul class="nav-links">
+    <li><a href="mission.html" class="">Mission</a></li>
+    <li><a href="about.html" class="">About</a></li>
+    <li><a href="programs.html" class="active">Programs</a></li>
+    <li><a href="submit.html" class="">Submit</a></li>
+    <li><a href="involved.html" class="">Get Involved</a></li>
+  </ul>
+</nav>
+
+<div class="page navy-bg"><div class="page-inner">
+  <p class="section-label">What We Do</p>
+  <h2 class="section-title">Programs &amp; Opportunities</h2>
+
+  <div class="programs-grid">
+    <div class="program-card">
+      <h3>📖 Open Submissions</h3>
+      <p>Submit your writing, poetry, visual art, photography, music, or any creative work. No polished portfolios required. Raw, honest expression is what we value most.</p>
+    </div>
+    <div class="program-card">
+      <h3>🎨 Creative Workshops</h3>
+      <p>Free virtual workshops led by teen artists and writers. Learn new mediums, refine your craft, and connect with other creators who understand.</p>
+    </div>
+    <div class="program-card">
+      <h3>👥 Peer Mentorship</h3>
+      <p>Connect with older teen mentors who've walked similar paths. Get feedback on your work, advice on creative careers, or simply someone who listens.</p>
+    </div>
+    <div class="program-card">
+      <h3>🌐 Community Gallery</h3>
+      <p>A curated online space showcasing teen art and literature. Selected works are published with full credit and the artist's consent. Your voice, your terms.</p>
+    </div>
+  </div>
+</div></div>
+
+<div class="footer">
+  <div class="footer-vlu">VLU</div>
+  <p class="footer-tag">Voices Left Unseen — Est. 2026</p>
+  <div class="footer-links">
+    <a href="mission.html">Mission</a>
+    <a href="about.html">About</a>
+    <a href="programs.html">Programs</a>
+    <a href="submit.html">Submit</a>
+    <a href="involved.html">Get Involved</a>
+  </div>
+  <p class="footer-copy">A student-led initiative. Built by teens, for teens.</p>
+</div>
+
+</body>
+</html>
